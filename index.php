@@ -3,10 +3,10 @@
 require './db.php';
 require './putUserIds.php';
 require './getUsers.php';
-require './changeNumbersToHex.php';
+require './addHexToUsers.php';
 
 $users = getUsers($db);
 
-$users = changeNumberstoHex($users);
+$users = addHexToUsers($users);
 
 putUserIds($db, $users);

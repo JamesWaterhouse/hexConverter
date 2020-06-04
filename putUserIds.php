@@ -4,10 +4,10 @@ function putUserIds(PDO $db, Array $users) {
 
     foreach ($users as $user) {
         $query = $db->prepare(
-            "UPDATE `users` SET `id` = :id WHERE `email` = :email"
+            "UPDATE `users` SET `id` = :hexId WHERE `id` = :id "
         );
+        $query -> bindParam(':hexId', $user['hexId']);
         $query -> bindParam(':id', $user['id']);
-        $query -> bindParam(':email', $user['email']);
         $query->execute();
     }
     return true;
